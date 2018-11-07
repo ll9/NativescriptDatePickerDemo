@@ -1,11 +1,6 @@
 <template>
     <Page>
         <ActionBar title="Welcome to NativeScript-Vue!" android:flat="true"/>
-        <TabView android:tabBackgroundColor="#53ba82"
-                 android:tabTextColor="#c4ffdf"
-                 android:selectedTabTextColor="#ffffff"
-                 androidSelectedTabHighlightColor="#ffffff">
-            <TabViewItem title="Tab 1">
                 <StackLayout>
                     <TextField hint="datetime" keyboardType="datetime"></TextField>
                     <TextField hint="phone" keyboardType="phone"></TextField>
@@ -15,18 +10,6 @@
                     <TextField hint="custDate" @tap="openDatePicker"></TextField>
                     <TextField v-model="date" hint="pluginDatepicker" @tap="openDatePickerPlugin"></TextField>
                 </StackLayout>
-            </TabViewItem>
-            <TabViewItem title="Tab 2">
-                <GridLayout columns="*" rows="*">
-                    <Label class="message" text="Tab 2 Content" col="0" row="0"/>
-                </GridLayout>
-            </TabViewItem>
-            <TabViewItem title="Tab 3">
-                <GridLayout columns="*" rows="*">
-                    <Label class="message" text="Tab 3 Content" col="0" row="0"/>
-                </GridLayout>
-            </TabViewItem>
-        </TabView>
     </Page>
 </template>
 
@@ -39,7 +22,6 @@ const picker = new ModalDatetimepicker();
 export default {
   data() {
     return {
-      msg: "Hello World!",
       date: ""
     };
   },
@@ -62,9 +44,7 @@ export default {
           var todayUTC = new Date(
             Date.UTC(jsdate.getFullYear(), jsdate.getMonth(), jsdate.getDate())
           );
-          this.date = todayUTC
-            .toISOString()
-            .slice(0, 10)
+          this.date = todayUTC.toISOString().slice(0, 10);
         })
         .catch(error => {
           console.log("Error: " + error);
